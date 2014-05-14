@@ -8,60 +8,50 @@
 	<name>TestAll Maven Webapp</name>
 	<url>http://maven.apache.org</url>
 
+
 	<properties>
-		<servlet.api.version>2.5</servlet.api.version>
-		<hibernate.version>3.5.6-Final</hibernate.version>
-		<hibernate.annatotion.version>3.5.6-Final</hibernate.annatotion.version>
-		<mysql.connector.java.version>5.1.30</mysql.connector.java.version>
+		<hibernate.version>3.6.10.Final</hibernate.version>
+		<javassist.version>3.12.1.GA</javassist.version>
+		<hibernate.annotations.version>3.4.0.GA</hibernate.annotations.version>
+		<mysql.version>5.1.9</mysql.version>
 		<slf4j.version>1.7.5</slf4j.version>
-		<javassist.version>3.18.1-GA</javassist.version>
-		<ejb3.persistence.version>1.0.2.GA</ejb3.persistence.version>
+		<junit.version>4.8</junit.version>
 	</properties>
 
 	<dependencies>
+
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
-			<version>3.8.1</version>
+			<version>${junit.version}</version>
 			<scope>test</scope>
 		</dependency>
 
-		<!-- servlet -->
-		<dependency>
-			<groupId>javax.servlet</groupId>
-			<artifactId>servlet-api</artifactId>
-			<version>${servlet.api.version}</version>
-			<scope>provided</scope>
-		</dependency>
+		<!-- hibernate -->
 
-		<!-- Hibernate -->
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-core</artifactId>
 			<version>${hibernate.version}</version>
 		</dependency>
+
 		<dependency>
-			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-annotations</artifactId>
-			<version>${hibernate.annatotion.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.javassist</groupId>
+			<groupId>javassist</groupId>
 			<artifactId>javassist</artifactId>
 			<version>${javassist.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-entitymanager</artifactId>
-			<version>${hibernate.version}</version>
+			<artifactId>hibernate-annotations</artifactId>
+			<version>${hibernate.annotations.version}</version>
 		</dependency>
 
-		<!-- DB driver -->
+		<!-- DB Driver -->
+
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
-			<version>${mysql.connector.java.version}</version>
-			<scope>runtime</scope>
+			<version>${mysql.version}</version>
 		</dependency>
 
 		<!-- logging -->
@@ -71,25 +61,60 @@
 			<version>${slf4j.version}</version>
 			<scope>compile</scope>
 		</dependency>
-		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-log4j12</artifactId>
-			<version>${slf4j.version}</version>
-		</dependency>
 
+
+		<!-- <dependency> -->
+		<!-- <groupId>org.hibernate</groupId> -->
+		<!-- <artifactId>hibernate-validator</artifactId> -->
+		<!-- <version>${hibernate.validator.version}</version> -->
+		<!-- </dependency> -->
 		<!-- more -->
-		<dependency>
-			<groupId>org.hibernate</groupId>
-			<artifactId>ejb3-persistence</artifactId>
-			<version>${ejb3.persistence.version}</version>
-		</dependency>
 
-		<dependency>
-			<groupId>com.googlecode.genericdao</groupId>
-			<artifactId>dao-hibernate</artifactId>
-			<version>1.2.0</version> <!-- use current version -->
-		</dependency>
+		<!-- <dependency> -->
+		<!-- <groupId>org.slf4j</groupId> -->
+		<!-- <artifactId>slf4j-api</artifactId> -->
+		<!-- <version>${slf4j.version}</version> -->
+		<!-- <scope>compile</scope> -->
+		<!-- </dependency> -->
+
+
+
+		<!-- <dependency> -->
+		<!-- <groupId>org.apache.commons</groupId> -->
+		<!-- <artifactId>commons-lang3</artifactId> -->
+		<!-- <version>${commons.lang.version}</version> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>junit</groupId> -->
+		<!-- <artifactId>junit</artifactId> -->
+		<!-- <version>${junit.version}</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+
+		<!-- <dependency> -->
+		<!-- <groupId>org.hibernate</groupId> -->
+		<!-- <artifactId>ejb3-persistence</artifactId> -->
+		<!-- <version>${ejb3.persistence.version}</version> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.googlecode.genericdao</groupId> -->
+		<!-- <artifactId>dao-hibernate</artifactId> -->
+		<!-- <version>1.2.0</version> use current version -->
+		<!-- </dependency> -->
+
+
+
+		<!-- <dependency> -->
+		<!-- <groupId>javax.validation</groupId> -->
+		<!-- <artifactId>validation-api</artifactId> -->
+		<!-- <version>1.1.0.Final</version> -->
+		<!-- <scope>provided</scope> -->
+		<!-- </dependency> -->
 	</dependencies>
+
 	<build>
 		<finalName>TestAll</finalName>
 	</build>
