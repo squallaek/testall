@@ -14,9 +14,11 @@ public class ProvinceAction {
 
 	Session session;
 	Province province;
+	District district;
 
 	public ProvinceAction() {
 		province = new Province();
+		district = new District();
 		SessionFactory sessionFactory = new Configuration().configure().addAnnotatedClass(Province.class)
 				.addAnnotatedClass(District.class).buildSessionFactory();
 		session = sessionFactory.openSession();
@@ -26,18 +28,44 @@ public class ProvinceAction {
 		ProvinceAction provinceAction = new ProvinceAction();
 
 		// provinceAction.province.setProvinceName("wasdf");
-		// provinceAction.addProvince(provinceAction.province);
+		// provinceAction.addProvince(new Province(), "aaaabbbsssss");
 		// provinceAction.updateProvince(provinceAction.province);
 		// provinceAction.deleteProvince(provinceAction.province);
 		// provinceAction.findProvincefromId(provinceAction.province);
 
-		provinceAction.findAllProvince(provinceAction.province);
+		// Province province1 = (Province)
+		// provinceAction.session.get(Province.class, 10);
+		// System.out.println(province1);
+
+		provinceAction.showDistrictOfProvince(provinceAction.province);
+
+		// provinceAction.addDistrictAndProvinceId(provinceAction.district);
+		//
+		// provinceAction.findAllProvince(provinceAction.province);
 		provinceAction.session.close();
 	}
 
-	public void addProvince(Province province) {
+	public void showDistrictOfProvince(Province province) {
+		Province provinces = (Province) session.get(Province.class, 10);
+		List<District> districts = provinces.getDistrict();
+
+		System.out.println("Province :" + provinces.getProvinceName());
+		for (District keepDistrict : districts) {
+			System.out.println("District : " + keepDistrict.getDistrictName());
+		}
+	}
+
+	public void addDistrictAndProvinceId(District district) {
 		session.beginTransaction();
-		// province.setProvinceName("asdf");
+		district.setDistrictName("Hyodyod4");
+		district.setProvince((Province) session.get(Province.class, 10));
+		session.save(district);
+		session.getTransaction().commit();
+	}
+
+	public void addProvince(Province province, String name) {
+		session.beginTransaction();
+		province.setProvinceName(name);
 		session.save(province);
 		session.getTransaction().commit();
 	}

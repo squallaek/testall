@@ -17,12 +17,17 @@ public class District {
 	@GeneratedValue
 	@Column(name = "ID")
 	private Integer id;
-	@Column(name = "DISTRICT_NAME")
+	@Column(name = "DISTRICT_NAME", unique = true, nullable = false)
 	private String districtName;
 
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne
 	@JoinColumn(name = "PROVINCE_ID")
 	private Province province;
+
+	@Override
+	public String toString() {
+		return "District [id=" + id + ", districtName=" + districtName + ", province=" + province + "]";
+	}
 
 	public Province getProvince() {
 		return province;
